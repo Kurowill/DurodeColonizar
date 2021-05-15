@@ -4,12 +4,16 @@ from obj import Obj
 class Menu:
 
     def __init__(self):
+        
         self.todos_sprites = pygame.sprite.Group()
 
 
         self.bg1 = Obj("assets/bg1.png", 0, 0, self.todos_sprites)
         self.bg2 = Obj("assets/bg2.png", 500, 0, self.todos_sprites)
         self.bg3 = Obj("assets/bg3.png", 1000, 0, self.todos_sprites)
+        self.bg4 = Obj("assets/bg2.png", 1500, 0, self.todos_sprites)
+
+        self.bg4.image = pygame.transform.flip(self.bg4.image, 1500, 0)
 
 #        self.ground = Obj("imagem", 0, 480, self.todos_sprites)
 #        self.ground2 = Obj("imagem", 360, 480, self.todos_sprites)
@@ -45,16 +49,19 @@ class Menu:
 '''
 
     def move_bg(self):
-        self.bg1.rect[0] -= 1
-        self.bg2.rect[0] -= 1
-        self.bg3.rect[0] -= 1
+        self.bg1.rect[0] -= 2
+        self.bg2.rect[0] -= 2
+        self.bg3.rect[0] -= 2
+        self.bg4.rect[0] -= 2
 
-        if self.bg1.rect[0] <= -1000:
-            self.bg1.rect[0] = 0
+        if self.bg1.rect[0] <= -500:
+            self.bg1.rect[0] = 1500
         if self.bg2.rect[0] <= -500:
-            self.bg2.rect[0] = 500
-        if self.bg3.rect[0] <= 0:
-            self.bg3.rect[0] = 1000
+            self.bg2.rect[0] = 1500
+        if self.bg3.rect[0] <= -500:
+            self.bg3.rect[0] = 1500
+        if self.bg4.rect[0] <= -500:
+            self.bg4.rect[0] = 1500
 
 '''
     def move_ground(self):

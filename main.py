@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 
 from game import Game
 from menu import Menu
@@ -22,22 +23,26 @@ class Main:
 
 
     def desenhar(self):
-        if not self.menu.mudar_cenario:
-            self.menu.desenhar(self.tela)
 
-        elif not self.game.mudar_cenario:
+#        if not self.menu.mudar_cenario:
+#            self.menu.desenhar(self.tela)
+
+        if not self.game.mudar_cenario:
             self.game.desenhar(self.tela)
 
         else:
             self.loop = False
 
     def eventos(self):
+
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 self.loop = False
+            self.game.hero.eventos(evento)
 
 
     def update(self):
+
         while self.loop:
             self.desenhar()
             self.eventos()
