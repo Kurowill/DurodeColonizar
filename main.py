@@ -45,16 +45,16 @@ class Main:
 
         while self.loop:
             self.desenhar()
-            self.eventos()
             self.fps.tick(30)
             if not self.menu.mudar_cenario:
                 self.menu.update()
             if not self.game.mudar_cenario:
-                self.game.update()
+                self.game.update(self.tela)
             pygame.display.update()
+            self.eventos()
 
-Largura = 500
-Altura = 500
+Largura = 700
+Altura = 700
 
 
 Main = Main(Largura, Altura, "Duro de Colonizar", "assets/favicon.ico")
